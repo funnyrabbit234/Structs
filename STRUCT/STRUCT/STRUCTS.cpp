@@ -33,9 +33,10 @@ private:
 struct Student
 {
 public:
-    // TASK 1: Add name, studentId and mark.
-    // name stores a neutral learner label such as A or B.
-    // Use std::string, int and int respectively.
+	std::string name = "";
+    int studentId = 0;
+	int mark = 0; 
+// An int member called mark, initially 0.
     // Give studentId and mark default values of 0.
     // TASK 13: Later replace int mark with Mark mark{0}.
 };
@@ -143,6 +144,7 @@ void printMenu()
 
 int main()
 {
+
     std::cout << std::fixed << std::setprecision(1);
     std::vector<Student> students;
     loadSampleRecords(students);
