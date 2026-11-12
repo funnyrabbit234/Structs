@@ -58,14 +58,22 @@ void loadSampleRecords(std::vector<Student>& students)
 
 void printStudent(const Student& student)
 {
-    // TASK 3A: Print the ID, name and mark on one line.
+	std::cout << student.studentId << " " << student.name << " " << student.mark << "\n";
     // TASK 13: Read the mark through getValue().
 }
 
 void printAll(const std::vector<Student>& students)
 {
-    // TASK 3B: Handle an empty vector. Otherwise loop
-    // through the records and call printStudent().
+    if (students.empty()){
+		std::cout << "No students to display.\n";
+        return;
+    } 
+    else {
+        for (const Student& student : students)
+        {
+            printStudent(student);
+        }
+    }
 }
 
 int findStudentIndex(const std::vector<Student>& students,
@@ -156,8 +164,6 @@ int main()
 
     std::cout << std::fixed << std::setprecision(1);
     std::vector<Student> students;
-    loadSampleRecords(students);
-	std::cout << students.size();
     loadSampleRecords(students);
     int choice = -1;
 
