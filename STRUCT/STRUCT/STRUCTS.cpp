@@ -79,17 +79,47 @@ void printAll(const std::vector<Student>& students)
 int findStudentIndex(const std::vector<Student>& students,
     int studentId)
 {
-    // TASK 4: Return the matching index, or -1 if absent.
+    int count = static_cast<int>(students.size());
+    for (int i = 0; i < count; ++i)
+    {
+        if (students[i].studentId == studentId) {
+            return i;
+        }
+      
+    }
     return -1;
 }
 
 bool addStudent(std::vector<Student>& students,
     const std::string& name, int studentId, int mark)
 {
-    // TASK 5: Reject non-positive IDs, marks outside 0 to 100,
-    // and duplicate IDs. Otherwise append one record.
-    // TASK 13: Construct its mark with Mark{mark}.
-    return false;
+    if (studentId <= 0) {
+		std::cout << "Inavlid Student ID.\n";
+		return false;
+    } 
+     else if (mark < 0 || mark > 100) {
+		std::cout << "Invalid mark.\n";
+        return false;
+ }
+     else {
+        int index = findStudentIndex(students, studentId);
+        if (index != -1) {
+            std::cout << "Student ID already exists.\n";
+            return false;
+        }
+        Student newStudent;
+        newStudent.name = name;
+        newStudent.studentId = studentId;
+        newStudent.mark = mark;
+        students.push_back(newStudent);
+        return true;
+    }
+ // Call findStudentIndex() and reject an existing ID.
+ // 
+ // 
+ // Construct a Student with name, studentId and mark.
+ // Append it to students, then return true.
+    return true;
 }
 
 bool updateMark(std::vector<Student>& students,
@@ -161,7 +191,6 @@ void printMenu()
 
 int main()
 {
-
     std::cout << std::fixed << std::setprecision(1);
     std::vector<Student> students;
     loadSampleRecords(students);
