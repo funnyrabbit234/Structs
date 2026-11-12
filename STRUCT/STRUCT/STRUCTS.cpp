@@ -43,8 +43,17 @@ public:
 
 void loadSampleRecords(std::vector<Student>& students)
 {
-    // TASK 2: Clear students, create a built-in array of
-    // three sample records, then copy them into students.
+    students.clear();
+    Student samples[3] =
+    {
+        { "A", 1042, 68 },
+        { "B", 1043, 35 },
+        { "C", 1044, 81 }
+    };
+    for (const Student& student : samples)
+    {
+        students.push_back(student);
+    }
 }
 
 void printStudent(const Student& student)
@@ -147,6 +156,8 @@ int main()
 
     std::cout << std::fixed << std::setprecision(1);
     std::vector<Student> students;
+    loadSampleRecords(students);
+	std::cout << students.size();
     loadSampleRecords(students);
     int choice = -1;
 
